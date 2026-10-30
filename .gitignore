@@ -1,0 +1,42 @@
+# Dependencies and generated builds
+node_modules/
+target/
+src-tauri/gen/schemas/
+
+# Local work, verification and distribution directories
+/work/
+/outputs/
+/qa-data/
+/.qa-data/
+/backups/
+/data/
+*.app/
+*.dmg
+*.zip
+*.tar.gz
+*.log
+
+# Local study data and exported backups
+*.sqlite
+*.sqlite-*
+*.sqlite3
+*.sqlite3-*
+*.db
+*.db-*
+widget-preferences.json
+comet-backup-*.json
+comet-raw-data-*.json
+
+# Local environment and signing material
+.env
+.env.*
+credentials.*
+*.pem
+*.p12
+*.pfx
+
+# macOS and editor files
+.DS_Store
+.AppleDouble
+.idea/
+.vscode/

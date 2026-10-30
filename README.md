@@ -92,4 +92,4 @@ ui-tests/       浏览器界面测试
 
 ## 许可证
 
-本仓库当前尚未指定开源许可证。
+本项目采用 [MIT License](LICENSE)。Copyright (c) 2026 rereva0611。
