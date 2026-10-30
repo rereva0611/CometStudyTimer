@@ -1,0 +1,65 @@
+/* Rose retains its original colors; dark overrides every application surface. */
+#appearance-toggle{width:34px;height:34px;flex-shrink:0;border-radius:7px;color:var(--muted)}
+#appearance-toggle svg{width:18px;height:18px}
+:root[data-theme="github-dark"]{
+  color-scheme:dark;--bg:#0d1117;--card:#161b22;--white:#161b22;
+  --text:#e6edf3;--muted:#8b949e;--line:#30363d;--accent:#3fb950;--rose:#3fb950;
+  --heat0:#21262d;--heat1:#0e4429;--heat2:#115e2d;--heat3:#006d32;
+  --heat4:#1b8a3e;--heat5:#26a641;--heat6:#39d353;
+  --comet-tail:#7ee787;--comet-star:#3fb950;
+  --surface-hover:#21262d;--surface-selected:#163723;--danger:#f85149;
+}
+:root[data-theme="github-dark"] body:has(.shell){background:var(--bg)}
+:root[data-theme="github-dark"] :is(.card,.stats-grid){background:var(--card);border-color:var(--line);box-shadow:none}
+:root[data-theme="github-dark"] :is(.brand,.intro h1,.timer-digits,.record-row,.record-duration,.empty-state strong,.field input){color:var(--text)}
+:root[data-theme="github-dark"] :is(.topbar,.record-row,.stat,.legend-detail,.history-pagination){border-color:var(--line)}
+:root[data-theme="github-dark"] :is(.small-label,.stat-label,.stat-value span,.stat-foot,.tiny-label,.weekday-labels,.month-labels,.heatmap-footer,.record-date,.record-clock,.session-clock,.empty-state,.empty-state p,.field,.optional,.dialog-description,.import-note,.existing-total,.older-records,footer,.today-pill,.goal-row,.subject-field,.today-caption,.dialog-foot>span,.legend-detail){color:var(--muted)}
+:root[data-theme="github-dark"] :is(.accent,.text-button,.text-button.accent,.round-button,.streak-mark,.footer-mark,.card-top h2 svg,.record-row svg,.legend .text-button,#continue-last,#widget-undo){color:var(--accent)}
+:root[data-theme="github-dark"] :is(.text-button,.text-button.accent):hover{color:#7ee787}
+:root[data-theme="github-dark"] :is(.subtle-button,.icon-button){color:var(--muted);border-color:var(--line);background:transparent}
+:root[data-theme="github-dark"] :is(.subtle-button,.icon-button):hover:not(:disabled){background:var(--surface-hover);color:var(--text)}
+:root[data-theme="github-dark"] .primary{background:#238636;border-color:#2ea043;color:#fff}
+:root[data-theme="github-dark"] .primary:hover:not(:disabled){background:#2ea043}
+:root[data-theme="github-dark"] :is(.secondary,.round-button,.today-pill,.segmented,.import-note){background:var(--surface-hover);border-color:var(--line);color:var(--text)}
+:root[data-theme="github-dark"] :is(.secondary,.round-button):hover:not(:disabled){background:#30363d}
+:root[data-theme="github-dark"] .timer-state{background:var(--surface-hover);color:var(--muted)}
+:root[data-theme="github-dark"] .timer-state.running{background:var(--surface-selected);color:#7ee787}
+:root[data-theme="github-dark"] .timer-digits span{color:var(--muted)}
+:root[data-theme="github-dark"] .subject-field input{color:var(--text)}
+:root[data-theme="github-dark"] :is(.subject-field input,.field input,#widget-subject)::placeholder{color:var(--muted)}
+:root[data-theme="github-dark"] :is(.progress-track,.progress){background:var(--line)}
+:root[data-theme="github-dark"] :is(.progress-track div,.progress i){background:var(--accent)}
+:root[data-theme="github-dark"] :is(.mini-bar,.empty-icon i){background:var(--heat3)}
+:root[data-theme="github-dark"] :is(.mini-bar:last-child,.empty-icon i:nth-child(5),.status-dot,#widget-running-dot){background:var(--accent)}
+:root[data-theme="github-dark"] .heatmap-scroll{scrollbar-color:#484f58 transparent}
+:root[data-theme="github-dark"] .day:not(:disabled):hover{filter:brightness(1.2);outline-color:var(--accent)}
+:root[data-theme="github-dark"] .day.today:after{border-color:var(--accent)}
+:root[data-theme="github-dark"] .level-0{background:var(--heat0)}
+:root[data-theme="github-dark"] .level-1{background:var(--heat1)}
+:root[data-theme="github-dark"] .level-2{background:var(--heat2)}
+:root[data-theme="github-dark"] .level-3{background:var(--heat3)}
+:root[data-theme="github-dark"] .level-4{background:var(--heat4)}
+:root[data-theme="github-dark"] .level-5{background:var(--heat5)}
+:root[data-theme="github-dark"] .level-6{background:var(--heat6)}
+:root[data-theme="github-dark"] :is(.record-row,.session-row):hover{background:var(--surface-hover)}
+:root[data-theme="github-dark"] :is(.heat-tooltip,#widget-tooltip){background:var(--card);color:var(--text);border-color:var(--line);box-shadow:0 4px 18px #01040966}
+:root[data-theme="github-dark"] :is(.toast,#widget-toast){background:var(--surface-hover);color:var(--text);border-color:var(--line);box-shadow:0 6px 24px #01040966}
+:root[data-theme="github-dark"] :is(.toast.error,#widget-toast.error){background:#301a1c;color:var(--danger);border-color:#713438}
+:root[data-theme="github-dark"] :is(.form-error,.delete-record,.storage.error){color:var(--danger)}
+:root[data-theme="github-dark"] .storage.error .status-dot{background:var(--danger)}
+:root[data-theme="github-dark"] #undo-button{border-color:#484f58}
+:root[data-theme="github-dark"] dialog{background:var(--card);border-color:var(--line);color:var(--text);box-shadow:0 20px 100px #010409aa}
+:root[data-theme="github-dark"] dialog::backdrop{background:#01040999}
+:root[data-theme="github-dark"] :is(.field input,#widget-subject){background:var(--bg);color:var(--text);border-color:var(--line)}
+:root[data-theme="github-dark"] :is(.backup-row[aria-pressed="true"],.segmented button[aria-pressed="true"]){background:var(--surface-selected);border-color:var(--accent);color:var(--text)}
+:root[data-theme="github-dark"] .header-controls button:hover{background:var(--surface-hover)}
+:root[data-theme="github-dark"] .header-controls button[aria-pressed="true"]{background:var(--surface-selected);color:var(--accent)}
+:root[data-theme="github-dark"] :is(#widget-card,#widget-icon){background:var(--card);border-color:var(--line)}
+:root[data-theme="github-dark"] #widget-heatmap button.level-0{background:var(--heat0)}
+:root[data-theme="github-dark"] #widget-heatmap button.level-1{background:var(--heat1)}
+:root[data-theme="github-dark"] #widget-heatmap button.level-2{background:var(--heat2)}
+:root[data-theme="github-dark"] #widget-heatmap button.level-3{background:var(--heat3)}
+:root[data-theme="github-dark"] #widget-heatmap button.level-4{background:var(--heat4)}
+:root[data-theme="github-dark"] #widget-heatmap button.level-5{background:var(--heat5)}
+:root[data-theme="github-dark"] #widget-heatmap button.level-6{background:var(--heat6)}
+@media(max-width:600px){#appearance-toggle{width:30px;height:30px}#appearance-toggle svg{width:16px;height:16px}}

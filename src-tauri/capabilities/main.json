@@ -1,0 +1,7 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "main",
+  "description": "Only the packaged Comet window may use core event APIs. Files and dialogs are handled by narrowly scoped Rust commands.",
+  "windows": ["main", "widget"],
+  "permissions": ["core:event:allow-listen", "core:event:allow-unlisten"]
+}

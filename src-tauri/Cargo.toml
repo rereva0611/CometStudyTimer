@@ -1,0 +1,43 @@
+[package]
+name = "comet"
+version = "1.4.0"
+description = "Offline study time tracker"
+edition = "2021"
+
+[lib]
+name = "comet_lib"
+crate-type = ["lib", "cdylib", "staticlib"]
+
+[[bin]]
+name = "Comet"
+path = "src/main.rs"
+required-features = ["desktop"]
+
+[features]
+default = ["desktop"]
+native-qa = ["desktop"]
+desktop = ["dep:tauri", "dep:tauri-plugin-dialog", "dep:tauri-plugin-single-instance", "dep:tauri-plugin-autostart", "dep:objc2", "dep:objc2-core-foundation"]
+
+[build-dependencies]
+tauri-build = { version = "2", features = [] }
+
+[dependencies]
+serde_json = "1"
+chrono = "0.4"
+rusqlite = { version = "0.38", features = ["bundled"] }
+tempfile = "3"
+tauri = { version = "2", features = ["tray-icon", "macos-private-api"], optional = true }
+tauri-plugin-autostart = { version = "2", optional = true }
+tauri-plugin-dialog = { version = "2", optional = true }
+tauri-plugin-single-instance = { version = "2", optional = true }
+
+[target.'cfg(target_os = "macos")'.dependencies]
+objc2 = { version = "0.6.5", optional = true }
+objc2-core-foundation = { version = "0.3.2", default-features = false, features = ["objc2"], optional = true }
+
+[profile.release]
+debug = 0
+strip = "symbols"
+incremental = false
+opt-level = "s"
+

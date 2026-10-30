@@ -1,0 +1,40 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Comet",
+  "version": "1.4.0",
+  "identifier": "app.comet.studytime",
+  "build": {
+    "frontendDist": "../frontend"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "macOSPrivateApi": true,
+    "windows": [
+      {
+        "label": "main",
+        "visible": false,
+        "title": "Comet",
+        "width": 1180,
+        "height": 860,
+        "minWidth": 360,
+        "minHeight": 600,
+        "backgroundColor": "#FFFCF9"
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src ipc: http://ipc.localhost; object-src 'none'; base-uri 'none'; form-action 'none'"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "app"
+    ],
+    "category": "Education",
+    "shortDescription": "Study time, thoughtfully recorded.",
+    "icon": [
+      "icons/icon.icns",
+      "icons/128x128.png"
+    ]
+  }
+}

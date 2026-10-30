@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Comet widget</title><script src="./appearance.js"></script><link rel="stylesheet" href="./widget.css"><link rel="stylesheet" href="./appearance.css"></head>
+<body>
+<svg class="symbols" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="comet" viewBox="0 0 36 36"><path d="M4 14l10 10M10 5l12 12M7 8l12 12" stroke="var(--comet-tail, #dcaebc)" stroke-width="2.4"/><path d="m25 17 2.1 5.9L33 25l-5.9 2.1L25 33l-2.1-5.9L17 25l5.9-2.1Z" fill="var(--comet-star, #b88778)" stroke="none"/></symbol>
+  <symbol id="pin" viewBox="0 0 24 24"><path d="m9 3 6 0-1 7 4 4H6l4-4-1-7ZM12 14v7"/></symbol>
+  <symbol id="minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><path d="m8 5 11 7-11 7Z"/></symbol>
+  <symbol id="pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+</defs></svg>
+<main id="widget-card" aria-label="Comet desktop widget">
+  <header id="widget-header"><span class="brand"><svg><use href="#comet"/></svg>Comet</span><div class="header-controls"><button id="widget-pin" aria-label="Pin widget" aria-pressed="false"><svg><use href="#pin"/></svg></button><button id="widget-collapse" aria-label="Collapse widget"><svg><use href="#minus"/></svg></button></div></header>
+  <section id="heatmap-view" aria-label="Study heatmap">
+    <div id="widget-months" aria-hidden="true"></div>
+    <div class="calendar"><div class="weekdays" aria-hidden="true"><span>Mon</span><span>Wed</span><span>Fri</span></div><div id="widget-heatmap" aria-label="Recent 12 weeks"></div></div>
+    <div class="today-row"><span id="widget-today">Today 0min / 2h</span><span class="progress" role="progressbar" aria-label="Daily study goal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="widget-progress"></i></span></div>
+    <button id="widget-start" class="primary" disabled><svg><use href="#play"/></svg><span>Start</span></button>
+  </section>
+  <section id="timer-view" aria-label="Study timer" hidden>
+    <div id="widget-timer" role="timer" aria-label="Current study timer">00:00:00</div>
+    <input id="widget-subject" maxlength="120" placeholder="What are you studying?" aria-label="Current subject" autocomplete="off">
+    <div class="timer-controls"><button id="widget-toggle" class="secondary"><svg><use href="#pause"/></svg><span>Pause</span></button><button id="widget-finish" class="primary">Finish &amp; save</button></div>
+  </section>
+  <div id="widget-tooltip" role="tooltip" hidden></div>
+  <div id="widget-toast" role="status" aria-live="polite" hidden><span id="widget-message"></span><button id="widget-undo" hidden>Undo</button></div>
+</main>
+<div id="collapsed-shell" data-preview="false" hidden><button id="widget-icon" aria-label="Expand Comet widget" hidden><svg><use href="#comet"/></svg><i id="widget-running-dot" hidden></i></button><span id="widget-peek-timer" role="timer" aria-label="Current study timer" aria-live="off" hidden>00:00:00</span></div>
+<script type="module" src="./widget.mjs"></script>
+</body></html>

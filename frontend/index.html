@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#fffcf9">
+  <meta name="description" content="Comet — a quiet space to track your study time.">
+  <title>Comet</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2036%2036%22%3E%3Crect%20width%3D%2236%22%20height%3D%2236%22%20rx%3D%228%22%20fill%3D%22%23fffcf9%22%2F%3E%3Cpath%20d%3D%22M4%2014l10%2010M10%205l12%2012M7%208l12%2012%22%20stroke%3D%22%23dcaebc%22%20stroke-width%3D%222.4%22%2F%3E%3Cpath%20d%3D%22m25%2017%202.1%205.9L33%2025l-5.9%202.1L25%2033l-2.1-5.9L17%2025l5.9-2.1Z%22%20fill%3D%22%23b88778%22%20stroke%3D%22none%22%2F%3E%3C%2Fsvg%3E">
+  <script src="./appearance.js"></script>
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./appearance.css">
+</head>
+<body>
+<svg class="svg-defs" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><defs>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="m9 5 11 7-11 7z"/></symbol>
+  <symbol id="i-pause" viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="m5 12 4 4L19 6"/></symbol>
+  <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M5 17v4h14v-4"/></symbol>
+  <symbol id="i-up" viewBox="0 0 24 24"><path d="M12 16V4m-5 5 5-5 5 5M5 17v4h14v-4"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="m14 6-6 6 6 6"/></symbol>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="m10 6 6 6-6 6"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="m6 6 12 12M6 18 18 6"/></symbol>
+  <symbol id="i-edit" viewBox="0 0 24 24"><path d="m15 5 4 4M4 20l4-1L20 7a2.8 2.8 0 0 0-4-4L4 15z"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M12 5c-3-2-6-2-9-1v15c3-1 6-1 9 1 3-2 6-2 9-1V4c-3-1-6-1-9 1zm0 0v15"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24"><path d="M20.5 14.1A8.8 8.8 0 0 1 9.9 3.5 8.8 8.8 0 1 0 20.5 14.1Z"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.4 1.4M17.6 17.6 19 19M5 19l1.4-1.4M17.6 6.4 19 5"/></symbol>
+</defs></svg>
+<div class="shell">
+  <header class="topbar">
+    <a class="brand" href="./" aria-label="Comet home"><svg class="comet-mark" viewBox="0 0 36 36" aria-hidden="true"><path d="M4 14l10 10M10 5l12 12M7 8l12 12" stroke="var(--comet-tail, #dcaebc)" stroke-width="2.4"/><path d="m25 17 2.1 5.9L33 25l-5.9 2.1L25 33l-2.1-5.9L17 25l5.9-2.1Z" fill="var(--comet-star, #b88778)" stroke="none"/></svg><span>Comet</span></a>
+    <div class="header-actions"><span id="storage-status" class="storage"><span class="status-dot"></span>Saved locally</span><button class="subtle-button" id="import-button"><svg><use href="#i-up"/></svg><span>Import</span></button><button class="subtle-button" id="export-button"><svg><use href="#i-down"/></svg><span>Export</span></button><button type="button" id="appearance-toggle" class="icon-button" title="Switch to GitHub Dark" aria-label="Switch to GitHub Dark" aria-pressed="false"><svg aria-hidden="true"><use href="#i-moon"/></svg></button></div>
+  </header>
+  <main>
+    <h1 class="visually-hidden">Comet study log</h1>
+    <div class="focus-grid">
+      <section class="card timer-card" aria-labelledby="timer-heading">
+        <div class="card-top"><h2 id="timer-heading"><svg class="icon"><use href="#i-clock"/></svg>Focus</h2><span class="timer-state" id="timer-state">Ready</span></div>
+        <label class="subject-field"><svg class="icon"><use href="#i-book"/></svg><input id="subject" maxlength="120" placeholder="What are you studying?" aria-label="Current subject"></label>
+        <div class="timer-digits" id="timer-display" role="timer" aria-label="Current study timer">00<span>:</span>00<span>:</span>00</div>
+        <div class="timer-controls"><button class="button primary" id="toggle-timer"><svg class="icon"><use href="#i-play"/></svg><span>Start</span></button><button class="button secondary" id="finish-timer" disabled><svg class="icon"><use href="#i-check"/></svg>Finish &amp; save</button><span class="continue-last-slot"><button class="text-button" id="continue-last" hidden>Continue last</button></span></div>
+      </section>
+      <section class="card today-card" aria-labelledby="today-heading">
+        <div class="card-top"><h2 id="today-heading">Today</h2><span class="small-label" id="today-short-date"></span></div>
+        <div class="today-amount" id="today-amount"><strong>0</strong><span>h</span><strong>0</strong><span>min</span></div>
+        <div class="goal-row"><span id="goal-status">0%</span><button class="text-button" id="goal-button">Goal 2h <svg class="icon" aria-hidden="true"><use href="#i-edit"/></svg></button></div>
+        <div class="progress-track" role="progressbar" aria-label="Daily study goal" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="goal-progress"><div id="progress-fill"></div></div>
+        <div class="today-bottom"><div><span class="tiny-label">Last 7 days</span><div class="mini-chart" id="mini-chart" aria-label="Study time over the last 7 days"></div></div><button class="round-button" id="manual-button" aria-label="Log study time"><svg class="icon"><use href="#i-plus"/></svg></button></div>
+        
+      </section>
+    </div>
+    <section class="stats-grid" aria-label="Study statistics">
+      <div class="stat"><span class="stat-label">Total time</span><div id="stat-total" class="stat-value">0<span>h</span></div></div>
+      <div class="stat"><span class="stat-label" title="Monday through today">This week</span><div id="stat-week" class="stat-value">0<span>h</span></div></div>
+      <div class="stat"><span class="stat-label">Study days</span><div id="stat-days" class="stat-value">0<span>days</span></div></div>
+      <div class="stat"><span class="stat-label">Current streak</span><div id="stat-streak" class="stat-value">0<span>days</span></div><span class="stat-foot" id="streak-foot">Best: 0 days</span></div>
+    </section>
+    <section class="card heatmap-card" aria-labelledby="heatmap-heading">
+      <div class="section-head"><div><h2 id="heatmap-heading">Study calendar</h2></div><div class="year-controls"><button class="icon-button" id="previous-year" aria-label="Previous year"><svg><use href="#i-left"/></svg></button><span id="year-label"></span><button class="icon-button" id="next-year" aria-label="Next year"><svg><use href="#i-right"/></svg></button></div></div>
+      <div class="heatmap-layout"><div class="weekday-labels" aria-hidden="true"><span>Mon</span><span>Wed</span><span>Fri</span></div><div class="heatmap-scroll" id="heatmap-scroll" tabindex="0" aria-label="Annual study calendar. Scroll horizontally to explore."><div class="month-labels" id="month-labels"></div><div class="heatmap" id="heatmap" role="group" aria-label="View study records by day"></div></div></div>
+      <div class="heatmap-footer"><span id="year-summary">No records yet</span><div class="legend"><span>Less</span><i class="level-0"></i><i class="level-1"></i><i class="level-2"></i><i class="level-3"></i><i class="level-4"></i><i class="level-5"></i><i class="level-6"></i><span>More</span><button class="text-button" id="legend-button" aria-label="View study duration color scale">ⓘ</button></div></div>
+      <div class="legend-detail" id="legend-detail" hidden>No record · &lt;30min · 30min–&lt;2h · 2–&lt;4h · 4–&lt;6h · 6–&lt;8h · ≥8h</div>
+    </section>
+    <section class="card records-card" aria-labelledby="records-heading">
+      <div class="section-head"><div class="history-heading"><h2 id="records-heading">Study history</h2><span class="history-period"><select id="history-month" aria-label="History period" aria-controls="records-list history-summary"><option value="">All time</option></select></span></div><button class="text-button accent" id="add-record"><svg class="icon" aria-hidden="true"><use href="#i-plus"/></svg><span>Log time</span></button></div>
+      <p id="history-summary" class="history-summary" role="status" aria-live="polite" aria-atomic="true"></p>
+      <div id="records-list"></div>
+      <nav class="history-pagination" id="history-pagination" aria-label="Study history pages" hidden>
+        <span id="history-range"></span>
+        <div class="history-page-controls">
+          <button type="button" class="icon-button" id="history-previous" aria-label="Previous page" aria-controls="records-list"><svg aria-hidden="true"><use href="#i-left"/></svg></button>
+          <span id="history-page" role="status" aria-live="polite" aria-atomic="true"></span>
+          <button type="button" class="icon-button" id="history-next" aria-label="Next page" aria-controls="records-list"><svg aria-hidden="true"><use href="#i-right"/></svg></button>
+        </div>
+      </nav>
+    </section>
+  </main>
+</div>
+<div class="heat-tooltip" id="heat-tooltip" role="tooltip" hidden></div>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden><span id="toast-message"></span><button type="button" id="undo-button" hidden>Undo</button></div>
+<dialog id="quit-error-dialog"><div class="dialog-head"><h2>Unable to quit</h2><button type="button" class="icon-button close-dialog" aria-label="Close"><svg><use href="#i-close"/></svg></button></div><p class="dialog-description">Comet stayed open because your data could not be saved.</p><p id="quit-error-message" class="form-error" role="alert"></p><button type="button" class="button primary full-width close-dialog">OK</button></dialog>
+<dialog id="day-dialog"><div class="dialog-head"><div class="day-date-controls"><button type="button" class="icon-button" id="day-previous" aria-label="Previous recorded day" aria-controls="day-title day-sessions"><svg aria-hidden="true"><use href="#i-left"/></svg></button><div class="day-heading"><h2 id="day-title" aria-live="polite" aria-atomic="true"></h2><p id="day-total" class="small-label"></p></div><button type="button" class="icon-button" id="day-next" aria-label="Next recorded day" aria-controls="day-title day-sessions"><svg aria-hidden="true"><use href="#i-right"/></svg></button></div><button type="button" class="icon-button close-dialog" aria-label="Close"><svg><use href="#i-close"/></svg></button></div><div id="day-sessions"></div><button type="button" class="button secondary full-width" id="day-add-record"><svg class="icon"><use href="#i-plus"/></svg>Log time</button></dialog>
+<dialog id="record-dialog"><form id="record-form"><div class="dialog-head"><h2 id="record-title">Log time</h2><button type="button" class="icon-button close-dialog" aria-label="Close"><svg><use href="#i-close"/></svg></button></div><label class="field">Date<input type="date" id="record-date" required min="1900-01-01"></label><div class="time-fields"><label class="field">Start <span class="optional">Optional</span><input id="record-start" type="time" step="60"></label><label class="field">End <span class="optional">Optional</span><input id="record-end" type="time" step="60"></label></div><div class="duration-fields"><label class="field">Hours<input id="record-hours" type="number" min="0" max="24" step="1" placeholder="0" inputmode="numeric"></label><label class="field">Minutes<input id="record-minutes" type="number" min="0" max="59" step="1" placeholder="0" inputmode="numeric"></label></div><label class="field">Subject <span class="optional">Optional</span><input id="record-note" maxlength="120" placeholder="Subject"></label><p id="record-error" class="form-error" role="alert"></p><div class="dialog-foot"><button type="button" id="delete-record" class="text-button delete-record" hidden>Delete</button><button type="submit" class="button primary">Save<svg class="icon"><use href="#i-arrow"/></svg></button></div></form></dialog>
+<dialog id="goal-dialog"><form id="goal-form"><div class="dialog-head"><div><h2>Daily goal</h2></div><button type="button" class="icon-button close-dialog" aria-label="Close"><svg><use href="#i-close"/></svg></button></div><label class="field">Minutes<input id="goal-input" type="number" min="5" max="1440" step="1" required inputmode="numeric"></label><p class="form-error" id="goal-error" role="alert"></p><button type="submit" class="button primary full-width">Save</button></form></dialog>
+<dialog id="import-dialog"><div class="dialog-head"><div><h2>Import backup</h2></div><button type="button" class="icon-button close-dialog" aria-label="Close"><svg><use href="#i-close"/></svg></button></div><p id="import-summary" class="dialog-description"></p><p id="import-error" class="form-error" role="alert"></p><p class="import-note">Overlapping dates will be replaced. Other dates and your current timer stay unchanged.</p><div class="dialog-foot"><button class="button secondary close-dialog">Cancel</button><button class="button primary" id="confirm-import">Import</button></div></dialog>
+<dialog id="backup-dialog"><div class="dialog-head"><h2>Backups</h2><p id="backup-status" class="small-label"></p><button type="button" class="icon-button close-dialog" aria-label="Close"><svg><use href="#i-close"/></svg></button></div><div id="backup-list" class="backup-list"></div><p id="backup-preview" class="dialog-description" hidden>Replaces study records and daily goal. Your current timer stays. A copy of current records is kept.</p><p id="backup-error" class="form-error" role="alert"></p><div class="dialog-foot"><button type="button" class="text-button" id="show-backup-folder">Show in Finder</button><button type="button" id="restore-backup" class="button primary" disabled>Restore</button></div></dialog>
+<input id="import-file" type="file" accept=".json,application/json" hidden>
+<script type="module" src="./app.mjs"></script>
+</body></html>
